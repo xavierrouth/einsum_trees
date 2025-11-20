@@ -2,7 +2,6 @@ import argparse
 from pathlib import Path
 import numpy as np
 import time
-import 
 
 try:
     import onnxruntime as ort

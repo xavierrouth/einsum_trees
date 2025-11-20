@@ -70,7 +70,9 @@ def main():
     
     optimized_model = lower_einsums(model)
 
-    output_path = input_path.with_name(f"optimized_{input_path.name}")
+    # output is same as input but instead of .model use .optimized_model
+    output_path = input_path.with_suffix(".optimized_model")
+    # output_path = input_path.with_name(f"{input_path.name.with_suffix("optimized_model")}")
     onnx.save(optimized_model, output_path.as_posix())
 
     print(f"Loaded model: {input_path}")
