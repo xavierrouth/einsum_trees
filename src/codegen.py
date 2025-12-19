@@ -44,6 +44,24 @@ def create_p_unp_gemm(graph: ir.Graph, einsum_node: ir.Node, dim_classification,
     # create a new value for the output
 
 
+    # check if it is a packed gemm
+    # label is GEMM, and is in both inputs and output
+    breakpoint()
+    # if C is labeled GEMM, then we can do packed gemm
+    is_packed = any(l == "GEMM" and dim_classification[d] == "C" for d, l in labeling.items())
+    if is_packed:
+        breakpoint()
+        node = ir.node(
+            graph=graph,
+            op_type="PackedGemm",
+            inputs=einsum_node.inputs,
+            attributes={
+                "transA": 1,
+                "transB": 1,
+            },
+            name="PackedGemm_from_Einsum: " + einsum_string
+        )
+
 
     breakpoint()
     node = ir.node(
@@ -227,6 +245,7 @@ def lower_einsum_node(graph: ir.Graph, model, einsum_node: ir.Node) -> ir.Node:
     # einsum_string = "pqr,psq->psr"
     # einsum_string = "pqr,spr->sqr"
     print(einsum_string)
+    breakpoint()
 
     if einsum_string.count(',') != 1:
         raise NotImplementedError("Only binary einsum expressions are supported")
@@ -264,6 +283,7 @@ def lower_einsum_node(graph: ir.Graph, model, einsum_node: ir.Node) -> ir.Node:
                     inp.remove(char)
             new_output.remove(char)
             labeling[char] = "GEMM"
+            continue
         else:
             stage = "check_m"
         if stage == "check_m" and dim_classification[char] == "M" and (char == inputs[0][-1]):
@@ -272,11 +292,13 @@ def lower_einsum_node(graph: ir.Graph, model, einsum_node: ir.Node) -> ir.Node:
                 inputs[0].remove(char)
             new_output.remove(char)
             labeling[char] = "GEMM"
+            continue
         else:
             stage = "check_n"
         if stage == "check_n" and not dim_classification[char] == "N":
             labeling[char] = "LOOP"
             new_output.remove(char)
+            continue
         else:
             break
     
@@ -299,6 +321,7 @@ def lower_einsum_node(graph: ir.Graph, model, einsum_node: ir.Node) -> ir.Node:
             inputs[0].remove(char)
             new_inputs_1.remove(char)
             labeling[char] = "GEMM"
+            continue
         else:
             stage = "check_right"
         
