@@ -1,0 +1,19 @@
+# Multi-node contraction benchmarks (3+ input tensors)
+# ID,Contraction,Dimension_Sizes,Arithmetic_Intensity
+1,pqr,psq,sq->psr,64,32,48,24,50
+2,abc,bcd,cde->ae,32,48,64,32,48,75
+3,ij,jk,kl,li->il,64,48,32,56,120
+4,ab,bc,cd,da->abcd,24,32,28,20,85
+5,pqr,psq,sq,abc,bcp->psr,20,30,10,200,60,3,2,150
+6,ijk,jkl,klm->ijm,48,32,24,40,36,90
+7,ab,bc,ca->abc,64,48,56,110
+8,xyz,yzw,zwx->xyzw,24,32,28,20,65
+9,aij,bjk,ckl->abcijkl,16,20,24,28,32,3,4,10
+10,mn,no,op,pm->mnop,32,40,36,28,95
+11,abc,acd,ade->bcde,48,32,24,40,36,130
+12,pq,qr,rs,st->pt,64,48,56,40,32,145
+13,ijk,jkl,ilm->ijklm,24,32,28,20,36,160
+14,ab,bc,cd,de,ea->abcde,20,24,28,32,36,175
+15,xyz,xyw,xwz->xyzw,32,24,40,28,55
+16,pqr,psq,sq,abc,bcp->psr,200,60,30,20,20,30,10,20
+

@@ -19,12 +19,12 @@ def lower_einsum_node(graph: ir.Graph, model, einsum_node: ir.Node, optimize=Fal
     einsum_string = einsum_node.attributes['equation'].value
 
     tree_node: TreeNode = contraction(einsum_string)
-    tree_node.print_tree()
+    # tree_node.print_tree()
     if optimize:
         tree_node = optimize_tree(tree_node)
-        tree_node.print_tree()
+        # tree_node.print_tree()
 
-    breakpoint()
+    # breakpoint()
 
     # Map leaves to original inputs by NAME, and matching location in einsum string
 

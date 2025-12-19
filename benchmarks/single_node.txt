@@ -1,0 +1,26 @@
+# Single-node contraction benchmarks
+# ID,Contraction,Dimension_Sizes,Arithmetic_Intensity
+1,abdfe,cf->abcde,48,36,24,36,48,36,7
+2,acdfe,bf->abcde,48,24,36,36,48,36,7
+3,abed,ce->abcd,96,84,24,96,96,10
+4,abcfe,df->abcde,48,36,36,24,48,48,8
+5,aced,be->abcd,96,24,84,96,84,9
+6,jki,efghjk->efghi,6,64,6,64,24,6,64,11
+7,abed,ce->abcd,96,84,24,84,96,10
+8,bcgf,adeg->abcdef,24,20,20,24,20,20,24,12
+9,bdgf,aceg->abcdef,24,20,20,24,20,20,24,12
+10,acgf,bdeg->abcdef,24,20,20,24,20,20,24,12
+11,abgf,cdeg->abcdef,24,20,20,24,20,20,24,12
+12,efhjki,gjk->efghi,6,64,24,4,94,6,64,11
+13,bced,ae->abcd,96,84,84,84,96,24
+14,aced,be->abcd,96,84,84,84,96,22
+15,abed,ce->abcd,96,84,84,84,96,22
+16,aedc,ebd->abc,96,84,84,84,96,41
+17,gkiljh,ekilfj->efgh,6,64,4,94,6,64,6,64,95
+18,gikljh,eiklfj->efgh,6,64,4,94,4,94,6,64,95
+19,efiklj,ghkl->efghij,6,64,4,94,4,94,6,64,95
+20,efiklj,ghkl->efghij,6,64,6,64,4,94,4,94,95
+21,fihg,dieh->defg,151,48,181,40,151,48,1207
+22,cefd,aebf->abcd,96,84,84,84,84,96,1283
+23,aefd,becf->abcd,96,84,84,84,96,96,1336
+24,cfed,afbe->abcd,96,84,84,96,84,8,1283

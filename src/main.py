@@ -19,7 +19,7 @@ def lower_einsums(model, optimization_pass=True):
     # Example: Remove consecutive identity operations
     nodes_to_remove = []
 
-    breakpoint()
+    # breakpoint()
 
     # ir_graph = ir.from_proto(graph)
     for i in range(graph.num_nodes()):
